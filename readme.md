@@ -1,37 +1,6 @@
-Since you are using **WiFi (UDP)**, this error is a "False Alarm." QGroundControl thinks you *might* want to plug in a USB radio, so it checks for permissions it doesn't have. Because you are using WiFi, you don't need those permissions.
 
-The reason `usermod danyi` failed is that "danyi" is only your **Web Login** name. The internal Linux user is still named **`abc`**.
+### install and run
 
-Here are the two ways to stop the error.
-
-### Option 1: Disable the Check in QGC (Recommended)
-
-Since you are using WiFi, simply tell QGC to stop looking for USB devices.
-
-1. **Launch QGC** (click OK on the error to dismiss it for now).
-2. Click the **"Q" Icon** (Top Left)  **Application Settings**.
-3. Scroll down to the **AutoConnect** section.
-4. **UNCHECK** the following boxes:
-* [ ] Pixhawk
-* [ ] SiK Radio
-* [ ] PX4 Flow
-* [ ] LibrePilot
-* [ ] RTK GPS
-
-
-5. **KEEP CHECKED:**
-* [x] UDP
-* [x] NMEA GPS Device (Optional, but usually safe)
-
-
-
-**Result:** QGC will stop scanning your USB ports on startup, and the error will disappear.
-
----
-
-### Option 2: The "Nuclear" Fix (Docker Flag)
-
-If you can't get to the settings or want the error gone forever at the system level, use the `--privileged` flag. This gives the container full access to your hardware, so the check passes.
 
 **1. Delete the old container:**
 
