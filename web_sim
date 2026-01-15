@@ -1,0 +1,14 @@
+fgfs --httpd=8080
+
+http://<IP_ADDRESS>:8080/screenshot?stream=y
+
+http://localhost:6080/vnc_lite.html
+
+module load instruments
+
+ttyd -p 8081 mavproxy.py --master=udp:localhost:14550 --out=tcpin:0.0.0.0:14551 --console
+
+
+./start_flight.sh
+https://<YOUR_PC_IP>:3001
+abc flightcontrol
